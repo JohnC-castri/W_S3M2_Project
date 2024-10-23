@@ -59,7 +59,7 @@
       }
       return Loopus
     }
-    console.log(processLearnersLoop([{ name: "Elisabeth", lovesJS: 1 }, { name: "Pete", age: 23, lovesJS: 0 }]))
+    // console.log(processLearnersLoop([{ name: "Elisabeth", lovesJS: 1 }, { name: "Pete", age: 23, lovesJS: 0 }]))
 
     // 👉 CHALLENGE 3
     // 🧠 The function processLearnerForEach takes an array of learner objects as its argument, and returns it after some modifications.
@@ -85,8 +85,25 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the map method of the learners array.
     // 🧠 Use arrow functions.
-    const processLearnerMap = () => {
-
+    const processLearnerMap = (learning) => {
+      let arr = []
+      learning.map(learn => {
+        if (learn.lovesJS === 0) {
+          learn.lovesJS = false
+          arr.push(learn)
+          return arr
+        }
+        else if (learn.lovesJS === 1) {
+          learn.lovesJS = true
+          arr.push(learn)
+          return arr
+        }
+        else {
+          arr.push(learn)
+          return arr
+        }
+      })
+      return arr
     }
 
     // 👉 CHALLENGE 5
@@ -97,8 +114,17 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 You will need to declare a result array into which you push learners from inside your forEach loop.
-    const getJavaScriptLoversForEach = () => {
-
+    const getJavaScriptLoversForEach = (JsLoving) => {
+      let arr2 = []
+      JsLoving.forEach(learn => {
+        if (learn.lovesJS) {
+          arr2.push(learn)
+        }
+      })
+      if (!arr2.length) {
+        return `no JS lovers here!`
+      }
+      return arr2
     }
 
     // 👉 CHALLENGE 6
@@ -106,8 +132,17 @@
     // 🧠 It should work exactly the same as the getJavaScriptLoversForEach function above.
     // ❗ Notes:
     // 🧠 Solve this challenge using the filter method of the learners array.
-    const getJavaScriptLoversFilter = () => {
-
+    const getJavaScriptLoversFilter = (learning) => {
+      let arr3 = []
+      learning.filter(learn => {
+        if (learn.lovesJS) {
+          return arr3.push(learn)
+        }
+      })
+      if (!arr3.length) {
+        return `no JS lovers here!`
+      }
+      return arr3
     }
 
     // 👉 CHALLENGE 7
@@ -122,9 +157,19 @@
     // ❗ Notes:
     // 🧠 This could be solved by using filter to make an array of odd integers, and then using forEach to add them up.
     // 🧠 Or you could opt for solving everything with a single forEach which is the recommended approach (saves a loop).
-    const sumOddInts = () => {
+    const sumOddInts = (odds) => {
+      let oddSum = 0;  
+      let oddNums = [];  
 
-    }
+      odds.forEach(odd => {
+        if (odd % 2 !== 0) {  
+          oddSum += odd;  
+          oddNums.push(odd);  
+        }
+      });
+
+      return [oddSum, oddNums]; 
+    };
 
     // 👉 CHALLENGE 8
     // 🧠 The function checkInts takes any number of arguments, but each argument is an integer.
@@ -137,8 +182,20 @@
     // checkInts(2, 6) // should return ["even", "even"]
     // ❗ Notes:
     // 🧠 Solve this problem using rest parameters and map.
-    const checkInts = () => {
-
+    const checkInts = (...args) => {
+      let arr4 = []
+      if (args.length === 0) {
+          return `pass some arguments, yo!`
+        }
+      args.map(val => {
+        if (val % 2 === 0) {
+          return arr4.push('even')
+        }
+        else if (val % 2 !== 0) {
+          return arr4.push('odd')
+        }
+      })
+      return arr4
     }
 
     // 🧪 TESTS, do not work below this line
